@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'pg', '~> 0.18.4'
 
 group :development, :test do
   gem 'byebug', require: false
