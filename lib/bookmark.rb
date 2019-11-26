@@ -13,7 +13,7 @@ class Bookmark
     conn = PG.connect(dbname: 'bookmark_manager')
     conn.exec('SELECT * FROM bookmarks') do |result|
       result.each do |row|
-        bookmarks << { name: row.values_at('name').first, url: row.values_at('url').first }
+        bookmarks << { name: row['name'], url: row['url'] }
       end
     end
     bookmarks
