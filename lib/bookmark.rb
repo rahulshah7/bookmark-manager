@@ -10,7 +10,9 @@ class Bookmark
     #   { name: 'Facebook', url: 'https://www.facebook.com' }
     # ]
     bookmarks = []
-    conn = PG.connect(dbname: 'bookmark_manager')
+    dbname = 'bookmark_manager'
+    dbname = 'bookmark_manager_test' if ENV['RACK_ENV'] == 'test'
+    conn = PG.connect(dbname: dbname)
     conn.exec('SELECT * FROM bookmarks') do |result|
       result.each do |row|
         bookmarks << { name: row['name'], url: row['url'] }
