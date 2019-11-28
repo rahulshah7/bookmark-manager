@@ -14,6 +14,7 @@ SimpleCov.start
 
 # For accurate test coverage measurements, require your code AFTER 'SimpleCov.start'
 
-require_relative './features/web_helper.rb'
+require_relative './features/web_helper'
+require_relative './setup_test_database'
 require_relative '../app'
 Capybara.app = BookmarkManager
