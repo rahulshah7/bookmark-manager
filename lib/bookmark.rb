@@ -19,5 +19,7 @@ class Bookmark
     bookmarks
   end
 
-  def self.create; end
+  def self.create(name, url)
+    db.exec("INSERT INTO bookmarks (name, url) VALUES ('#{name}', '#{url}');")
+  end
 end
