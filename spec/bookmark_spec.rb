@@ -17,4 +17,17 @@ describe Bookmark do
       expect(described_class.all.map { |el| el[:url] }).to start_with('https://www.google.com', 'https://www.bing.com', 'https://www.facebook.com')
     end
   end
+
+  describe '.create' do
+    it 'returns a list of bookmarks with a name' do
+      described_class.create('YouTube', 'https://www.youtube.com')
+      expect(described_class.all.map { |el| el[:name] })
+        .to start_with('Google', 'Bing', 'Facebook', 'YouTube')
+    end
+    it 'returns a list of bookmarks with a url' do
+      described_class.create('YouTube', 'https://www.youtube.com')
+      expect(described_class.all.map { |el| el[:url] })
+        .to start_with('https://www.google.com', 'https://www.bing.com', 'https://www.facebook.com', 'https://www.youtube.com')
+    end
+  end
 end
