@@ -13,13 +13,13 @@ class Bookmark
     bookmarks = []
     db.exec('SELECT * FROM bookmarks') do |result|
       result.each do |row|
-        bookmarks << { name: row['name'], url: row['url'] }
+        bookmarks << { title: row['title'], url: row['url'] }
       end
     end
     bookmarks
   end
 
-  def self.create(name, url)
-    db.exec("INSERT INTO bookmarks (name, url) VALUES ('#{name}', '#{url}');")
+  def self.create(title, url)
+    db.exec("INSERT INTO bookmarks (title, url) VALUES ('#{title}', '#{url}');")
   end
 end

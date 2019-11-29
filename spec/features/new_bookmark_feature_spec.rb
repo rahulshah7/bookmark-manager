@@ -7,14 +7,14 @@ feature 'New Bookmark can be created' do
     setup_test_database
     dbname = 'bookmark_manager_test'
     conn = PG.connect(dbname: dbname)
-    conn.exec("INSERT INTO bookmarks (name, url) VALUES ('Google', 'https://www.google.com'), ('Bing', 'https://www.bing.com'), ('Facebook', 'https://www.facebook.com');")
+    conn.exec("INSERT INTO bookmarks (title, url) VALUES ('Google', 'https://www.google.com'), ('Bing', 'https://www.bing.com'), ('Facebook', 'https://www.facebook.com');")
   end
 
   scenario 'User visits /bookmarks/new to create a bookmark' do
     visit '/bookmarks/new'
 
     within('#create_bookmark') do
-      fill_in 'Name', with: 'YouTube'
+      fill_in 'Title', with: 'YouTube'
       fill_in 'URL', with: 'https://www.youtube.com'
       click_button 'Create'
     end
