@@ -1,7 +1,7 @@
 <ul>
 
   <% @bookmarks.each do |bookmark| %>
-    <%= "<li>
+    <%= "<li id=#{bookmark[:id]}>
           <a href=#{bookmark[:url]}>
             #{bookmark[:title]}
           </a>

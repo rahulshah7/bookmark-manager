@@ -13,7 +13,7 @@ class Bookmark
     bookmarks = []
     db.exec('SELECT * FROM bookmarks') do |result|
       result.each do |row|
-        bookmarks << { title: row['title'], url: row['url'] }
+        bookmarks << { id: row['id'], title: row['title'], url: row['url'] }
       end
     end
     bookmarks
