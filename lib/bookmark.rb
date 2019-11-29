@@ -18,6 +18,7 @@ class Bookmark
         bookmarks << { name: row['name'], url: row['url'] }
       end
     end
+    bookmarks << { name: 'YouTube', url: 'https://www.youtube.com' }
     bookmarks
   end
 end
