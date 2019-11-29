@@ -8,8 +8,12 @@ So that <Motivation>,
 I'd like <Task>.
 
 As a User
-So that I can keep a record of interesting websites,
+So that I can view a record of interesting websites,
 I'd like to view a list of bookmarks.
+
+As a User
+So that I can keep a record of interesting websites,
+I'd like to create new bookmarks.
 ```
 
 ### How to Run
