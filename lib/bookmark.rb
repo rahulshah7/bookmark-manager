@@ -3,6 +3,8 @@
 require 'pg'
 
 class Bookmark
+  attr_reader :id, :title, :url
+
   def self.db
     dbname = 'bookmark_manager'
     dbname = 'bookmark_manager_test' if ENV['RACK_ENV'] == 'test'
@@ -13,7 +15,7 @@ class Bookmark
     bookmarks = []
     db.exec('SELECT * FROM bookmarks') do |result|
       result.each do |row|
-        bookmarks << { id: row['id'], title: row['title'], url: row['url'] }
+        bookmarks << new(row['id'], row['title'], row['url'])
       end
     end
     bookmarks
@@ -21,5 +23,13 @@ class Bookmark
 
   def self.create(title, url)
     db.exec("INSERT INTO bookmarks (title, url) VALUES ('#{title}', '#{url}');")
+  end
+
+  private
+
+  def initialize(id, title, url)
+    @id = id
+    @title = title
+    @url = url
   end
 end

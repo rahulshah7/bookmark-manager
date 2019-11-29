@@ -11,22 +11,22 @@ describe Bookmark do
   end
   describe '.all' do
     it 'returns a list of bookmarks with a title' do
-      expect(described_class.all.map { |el| el[:title] }).to start_with('Google', 'Bing', 'Facebook')
+      expect(described_class.all.map(&:title)).to start_with('Google', 'Bing', 'Facebook')
     end
     it 'returns a list of bookmarks with a url' do
-      expect(described_class.all.map { |el| el[:url] }).to start_with('https://www.google.com', 'https://www.bing.com', 'https://www.facebook.com')
+      expect(described_class.all.map(&:url)).to start_with('https://www.google.com', 'https://www.bing.com', 'https://www.facebook.com')
     end
   end
 
   describe '.create' do
     it 'adds to the list of bookmark titles' do
       described_class.create('YouTube', 'https://www.youtube.com')
-      expect(described_class.all.map { |el| el[:title] })
+      expect(described_class.all.map(&:title))
         .to start_with('Google', 'Bing', 'Facebook', 'YouTube')
     end
     it 'adds to the list of bookmark urls' do
       described_class.create('YouTube', 'https://www.youtube.com')
-      expect(described_class.all.map { |el| el[:url] })
+      expect(described_class.all.map(&:url))
         .to start_with('https://www.google.com', 'https://www.bing.com', 'https://www.facebook.com', 'https://www.youtube.com')
     end
   end
